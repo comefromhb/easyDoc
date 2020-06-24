@@ -125,7 +125,7 @@ public class ApiDocGenerator {
                     url.append(methodPath);
                     boolean hasTheMethodVersion = DocTagUtil.hasTheVersion(methodDoc,GlobalConstants.VERSION);
                     apiDoc.setHasVersion(hasTheClassVersion||hasTheMethodVersion);
-                    System.out.println(url.toString()+"-描述："+ DocTagUtil.getDescriptionTagText(methodDoc));
+                    //System.out.println(url.toString()+"-描述："+ DocTagUtil.getDescriptionTagText(methodDoc));
                     apiDoc.setUrl(url.toString());//url
                     String desc = methodDoc.commentText()+ DocTagUtil.getDescriptionTagText(methodDoc);
                     apiDoc.setDescription(desc);//描述
@@ -198,7 +198,7 @@ public class ApiDocGenerator {
         Type genericReturnType = method.getGenericReturnType();
         try {
             String typeNameTemp = genericReturnType.getTypeName();
-            System.out.println("------returnType------"+typeNameTemp);
+            //System.out.println("------returnType------"+typeNameTemp);
             if ("void".equals(typeNameTemp))return params;
             //递归
             while (!StringUtils.isEmpty(typeNameTemp)&& DocClassUtil.canOpen(typeNameTemp)){//可分解

@@ -12,13 +12,18 @@ import java.lang.reflect.Method;
 import java.net.URLClassLoader;
 import java.util.*;
 
+/**
+ * 自定义类加载器，用于加载制定工程目录下的字节码文件
+ */
 public class MyClassLoader extends ClassLoader{
     static {
         String daoPath = GlobalConstants.OPERATION_DAO_SRC.replace(GlobalConstants.SRC_PRE,"/target/classes/");
         String apiPath = GlobalConstants.OPERATION_CONTROLLER_SRC.replace(GlobalConstants.SRC_PRE,"/target/classes/");
+        String poi = GlobalConstants.JAR_DIR+"/org/apache/poi";
+        JarLoaderUtil.loadJarPath(poi);
         JarLoaderUtil.loadJarPath(daoPath);
         JarLoaderUtil.loadJarPath(apiPath);
-        System.out.println("-----类加载-----");
+        System.out.println("-----自定义类加载-----");
 
     }
 
@@ -42,7 +47,7 @@ public class MyClassLoader extends ClassLoader{
         if (cache.containsKey(name))
             return cache.get(name);
         //加载依赖
-        System.out.println("---------------自定义加载类："+name+"--------------------------");
+        //System.out.println("---------------自定义加载类："+name+"--------------------------");
         String[] nodes = name.split("\\.");
         if (nodes.length>2){
             String subJarDir = GlobalConstants.JAR_DIR+"/"+nodes[0]+"/"+nodes[1];
@@ -70,7 +75,7 @@ public class MyClassLoader extends ClassLoader{
         if (files ==null){
             return null;
         }
-        System.out.println("---------------自定义加载类file："+name+"--------------------------");
+        //System.out.println("---------------自定义加载类file："+name+"--------------------------");
         File file2 = null;
         for (File file: files){
             if (file.getAbsolutePath().endsWith(name.replace(".",File.separator).concat(".class"))){

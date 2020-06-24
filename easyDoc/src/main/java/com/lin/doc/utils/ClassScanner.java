@@ -123,7 +123,7 @@ public class ClassScanner implements ResourceLoaderAware {
                 + ClassUtils.convertClassNameToResourcePath(SystemPropertyUtils
                 .resolvePlaceholders(basePackage))
                 + "/**/*".concat(".class");
-        System.out.println("packPath="+packageSearchPath);
+        //System.out.println("packPath="+packageSearchPath);
         return packageSearchPath;
     }
 

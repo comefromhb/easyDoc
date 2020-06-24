@@ -68,7 +68,7 @@ public class AppMain {
             i++;
         }
         System.out.println("===========开始导出接口文档，路径"+ GlobalConstants.FILE_SAVE_DIR+"===========");
-        String name = "com/lin/doc";
+        String name = "doc";
         try {
             String path = GlobalConstants.FILE_SAVE_DIR+ GlobalConstants.FILE_PREFIX_NAME+name+i+".md";  //文件路径
             FileUtil.writeFile(text.toString(),path);
